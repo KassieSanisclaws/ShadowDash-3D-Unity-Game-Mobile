@@ -1,33 +1,73 @@
+using System.Numerics;
 using UnityEngine;
-using UnityEngine.InputSystem.XR;
+using UnityEngine.InputSystem;
+using Vector2 = UnityEngine.Vector2;
+using Vector3 = UnityEngine.Vector3;
 
 public class PlayerController : MonoBehaviour
 {
-    private CharacterController characterController;
-    private Vector3 moveDirection;
+    private CharacterController controller;
+    private Vector3 direction;
+    private Vector2 inputMove;
+
     public float speed = 5f;
-    public float jumpForce = 15f;
-    private int lane = 1; // 0 = Left, 1 = Middle, 2 = Right
-    public float laneDistance = 4f;
+    public float jumpForce = 10f;
+    public float gravity = -9.81f;
 
+    private float verticalVelocity;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    private InputSystem_Actions inputActions;
+
+    private void Awake()
     {
-        characterController = GetComponent<CharacterController>();
+        inputActions = new InputSystem_Actions();
+
+        inputActions.Player.Move.performed += ctx => inputMove = ctx.ReadValue<Vector2>();
+        inputActions.Player.Move.canceled += ctx => inputMove = Vector2.zero;
+
+        inputActions.Player.Jump.performed += ctx => Jump();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        moveDirection.z = speed;
+    private void OnEnable() => inputActions.Player.Enable();
+    private void OnDisable() => inputActions.Player.Disable();
 
-        if (characterController.isGrounded)
+    private void Start()
+    {
+        controller = GetComponent<CharacterController>();
+    }
+
+    private void Update()
+    {
+        HandleMovement();
+    }
+
+    private void HandleMovement()
+    {
+        // Lateral movement
+        direction = new Vector3(inputMove.x, 0f, 1f).normalized; // always move forward
+
+        // Apply gravity
+        if (controller.isGrounded)
         {
-            if (Input.GetKeyDown(KeyCode.UpArrow)) moveDirection.y = jumpForce;
+            if (verticalVelocity < 0)
+                verticalVelocity = -1f; // keep grounded
+        }
+        else
+        {
+            verticalVelocity += gravity * Time.deltaTime;
         }
 
-        moveDirection.y += Physics.gravity.y * Time.deltaTime;
-        characterController.Move(moveDirection * Time.deltaTime);
-}
+        direction.y = verticalVelocity;
+
+        controller.Move(direction * speed * Time.deltaTime);
+    }
+
+    private void Jump()
+    {
+        if (controller.isGrounded)
+        {
+            verticalVelocity = jumpForce;
+        }
+    }
+
 }

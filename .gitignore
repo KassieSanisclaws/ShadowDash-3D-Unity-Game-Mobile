@@ -3,11 +3,14 @@
 [Oo]bj/
 [Bb]uild/
 [Bb]uilds/
-Assets/AssetStoreTools*
-UserSettings/
-MemoryCaptures/
+
+# Crash Reports
+sysinfo.txt
+
+# Auto-generated VS/JetBrains Rider files
+.vscode/
+.idea/
 *.csproj
-*.unityproj
 *.sln
 *.suo
 *.tmp
@@ -16,7 +19,24 @@ MemoryCaptures/
 *.pidb
 *.booproj
 *.svd
-.idea/
-.vscode/
-.vs/
+*.vs/
+
+# Unity Package Manager
+Packages/packages-lock.json
+
+# Asset meta data should be tracked
+!Assets/**/*.meta
+!ProjectSettings/**/*.meta
+!Packages/**/*.meta
+
+# Build artifacts
 *.apk
+*.aab
+*.unitypackage
+
+# OS generated
+.DS_Store
+Thumbs.db
+
+# Rider
+*.DotSettings.user
