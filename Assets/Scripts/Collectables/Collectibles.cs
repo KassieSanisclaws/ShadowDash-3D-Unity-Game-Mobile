@@ -2,25 +2,37 @@ using UnityEngine;
 
 public class Collectibles : MonoBehaviour
 {
+  public enum CollectibleType
+  {
+    Coin,
+    DragonFruit,
+    DurianFruit,
+    DragonBall,
+    Shuriken,
+  }
 
-    void OnTriggerEnter(Collider other)
+    public CollectibleType type;
+
+ private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player"))
+      if (other.CompareTag("Player"))
         {
-            GameManager.instance.AddCoin();
+            int scoreToAdd = GetScoreFromType(type);
+            LevelOneGameManager.instance.AddScore(scoreToAdd);
             Destroy(gameObject);
         }
     }
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    private int GetScoreFromType(CollectibleType itemType)
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        switch (itemType)
+        {
+            case CollectibleType.Coin: return 500;
+            case CollectibleType.DragonFruit: return 3000;
+            case CollectibleType.DurianFruit: return 1000;
+            case CollectibleType.DragonBall: return 5000;
+            case CollectibleType.Shuriken: return 2000;
+            default: return 0;
+        }
     }
 }

@@ -12,13 +12,15 @@ public class SceneManager : MonoBehaviour
     public static int Level2 = 8;
     public static int Level3 = 9;
     public static int GameOver = 6;
-    
-    
-    
-    
+    public static int GameWon = 10;
+    public static int LevelCleared = 7;
+
+
+
+
     //public static int LoadSaveFile = 5;
     //public static int GameWonScene = 6;
-    
-   
-    
+
+
+
 }
