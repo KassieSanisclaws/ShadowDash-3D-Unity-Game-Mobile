@@ -4,24 +4,27 @@ using UnityEngine;
 
 public class TrackManager : MonoBehaviour
 {
-    public GameObject trackSegmentMap01; // Prefab for the track segment
-    public GameObject trackSegmentMap02; // Prefab for the track segment
-    public GameObject trackSegmentMap03; // Prefab for the track segment
-
-    void Start()
+    public GameObject[] trackSegment;
+    [SerializeField] int zPos=137; // Default z position for the track segment2
+    [SerializeField] bool createTrackSegment = false; // Flag to control the creation of track segment 2
+    [SerializeField] int trackSegmentPosition; // Position of the track segment in the scene
+    void Update()
     {
-        // Start the coroutine to generate track segments
-        StartCoroutine(SegmentGenerator());
+        if(createTrackSegment == false)
+        {
+           createTrackSegment = true; // Set the flag to true to start creating track segments
+           // Start the coroutine to generate track segments
+           StartCoroutine(SegmentGenerator());
+        }
+        
     }
 
     IEnumerator SegmentGenerator()
     {
-        // This method is intended to generate track segments
-        // The implementation details would depend on the specific requirements of the project
-
-        yield return new WaitForSeconds(7); // Placeholder for actual segment generation logic   
-        trackSegmentMap02.SetActive(true); // Example of activating a track segment prefab
-        yield return new WaitForSeconds(7); // Wait for 10 seconds before the next action
-        trackSegmentMap03.SetActive(true); // Activate another track segment prefab
+        trackSegmentPosition = Random.Range(0, trackSegment.Length); // Randomly select a track segment prefab
+        Instantiate(trackSegment[trackSegmentPosition], new Vector3(0,0, zPos), Quaternion.identity); // Instantiate the selected track segment prefab at the start position
+        zPos += 137; // Increment the z position for the next segment
+        yield return new WaitForSeconds(10); // Placeholder for actual segment generation logic   
+        createTrackSegment = false; // Reset the flag to false after generating the segment
     }
 }

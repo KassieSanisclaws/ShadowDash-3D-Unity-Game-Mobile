@@ -8,7 +8,7 @@ public class LevelOneGameManager : MonoBehaviour
     public int scoreCount = 0;
     public  TMP_Text scoreText;
 
-    public int winScore = 13000; // Score needed to win the game
+    public int winScore = 33000; // Score needed to win the game
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Awake()

@@ -19,6 +19,10 @@ public class Collectibles : MonoBehaviour
         {
             int scoreToAdd = GetScoreFromType(type);
             LevelOneGameManager.instance.AddScore(scoreToAdd);
+
+            // Play the appropriate sound effect based on the collectible type
+            PlayPickUpSound(type);
+
             Destroy(gameObject);
         }
     }
@@ -35,4 +39,27 @@ public class Collectibles : MonoBehaviour
             default: return 0;
         }
     }
-}
+
+    private void PlayPickUpSound(CollectibleType itemType)
+    {
+      if (SoundManager.instance == null) return;
+        switch (itemType)
+        {
+            case CollectibleType.Coin:
+                SoundManager.instance.PlaySFX(SoundManager.instance.coinPickup);
+                break;
+            case CollectibleType.DragonFruit:
+                SoundManager.instance.PlaySFX(SoundManager.instance.dragonFruitPickup);
+                break;
+            case CollectibleType.DurianFruit:
+                SoundManager.instance.PlaySFX(SoundManager.instance.coinPickup); // optional reuse
+                break;
+            case CollectibleType.DragonBall:
+                SoundManager.instance.PlaySFX(SoundManager.instance.gameWin); // or a unique sound
+                break;
+            case CollectibleType.Shuriken:
+                SoundManager.instance.PlaySFX(SoundManager.instance.shurikenPickup);
+                break;
+          }
+       }
+    }

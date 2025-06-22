@@ -24,37 +24,32 @@ public class CollectableSpawner : MonoBehaviour
         {
             float chance = Random.value;
 
-            if (chance < 0.1f)
+            if (chance < 0.4f)
             {
-                // 50% chance to spawn a basic collectible
                 Instantiate(RandomCommonCollectible(), point.position, Quaternion.identity);
             }
-            else if (chance < 0.3f)
+            else if (chance < 0.7f)
             {
-                // 20% chance to spawn an obstacle
-                Instantiate(durianFruitPrefab, point.position, Quaternion.identity);
+                Instantiate(RandomMediumCollectible(), point.position, Quaternion.identity);
             }
-            else if (chance < 0.55f)
-            {
-                // 5% chance to spawn a rare item
-                Instantiate(dragonBallPrefab, point.position, Quaternion.identity);
-            }
-            else if (chance < 0.85f)
-            {
-                Instantiate(dragonFruitPrefab, point.position, Quaternion.identity);
-            }
-            else if (chance < 0.95f)
+            else if (chance < 0.9f)
             {
                 Instantiate(shurikenPrefab, point.position, Quaternion.identity);
             }
-            // else: leave empty
+            else
+            {
+                Instantiate(dragonBallPrefab, point.position, Quaternion.identity);
+            }
         }
     }
 
-    GameObject RandomCommonCollectible()
+        GameObject RandomCommonCollectible()
     {
-        // Add more weighting logic here if needed
-        int choice = Random.Range(0, 2); // 0 or 1
-        return (choice == 0) ? coinPrefab : durianFruitPrefab;
+        return Random.value < 0.5f ? coinPrefab : durianFruitPrefab;
+    }
+
+    GameObject RandomMediumCollectible()
+    {
+        return dragonFruitPrefab;
     }
 }

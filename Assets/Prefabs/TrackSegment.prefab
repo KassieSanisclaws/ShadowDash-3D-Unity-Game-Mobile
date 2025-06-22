@@ -165,7 +165,6 @@ GameObject:
   m_Component:
   - component: {fileID: 5107508201039668855}
   - component: {fileID: 7478353264707112542}
-  - component: {fileID: 6770699870645498111}
   m_Layer: 0
   m_Name: EndPoint
   m_TagString: Untagged
@@ -209,23 +208,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &6770699870645498111
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1968874860595380371}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 58960711092b9cd4ea44e0d63dfd49e2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  trackSegmentPrefabs:
-  - {fileID: 5377483578146257615}
-  - {fileID: 0}
-  - {fileID: 0}
-  zOffset: 30
 --- !u!1 &2274396003950110431
 GameObject:
   m_ObjectHideFlags: 0
