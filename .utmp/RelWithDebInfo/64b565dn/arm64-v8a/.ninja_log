@@ -1,0 +1,12 @@
+# ninja log v5
+1	2065	7723413509779014	GameActivity/CMakeFiles/game.dir/UGADebug.cpp.o	5f34119224d0bae0
+216	2072	7723413511529348	GameActivity/CMakeFiles/game.dir/UGAConfiguration.cpp.o	5fbfa900d7b9b58c
+437	2074	7723413517588293	GameActivity/CMakeFiles/game.dir/UGAApplication.cpp.o	298f0aafff4803f8
+667	2076	7723413515731263	GameActivity/CMakeFiles/game.dir/UGAInputKeyEvent.cpp.o	a5e699a78cf6a598
+891	2077	7723413517957305	GameActivity/CMakeFiles/game.dir/UGAEntry.cpp.o	80750817b8c7acf9
+1833	2169	7723413519526537	FramePacing/CMakeFiles/swappywrapper.dir/UnitySwappyWrapper.cpp.o	72e218dcd2595eb3
+1126	2487	7723413522655129	GameActivity/CMakeFiles/game.dir/UGAInput.cpp.o	ea42bde5652a1d3
+1370	2489	7723413522675125	GameActivity/CMakeFiles/game.dir/UGAInputMotionEvent.cpp.o	8be0f78bc8a6caec
+2169	2611	7723413523803817	B:/Unity_Projects/2025/ShadowDash Game/ShadowDash/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/build/intermediates/cxx/RelWithDebInfo/64b565dn/obj/arm64-v8a/libswappywrapper.so	4b98fc3db18875d
+1593	2736	7723413525149817	GameActivity/CMakeFiles/game.dir/UGASoftKeyboard.cpp.o	720b33273e52a89
+2736	3138	7723413529127163	B:/Unity_Projects/2025/ShadowDash Game/ShadowDash/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/build/intermediates/cxx/RelWithDebInfo/64b565dn/obj/arm64-v8a/libgame.so	2a32e627157a50d
